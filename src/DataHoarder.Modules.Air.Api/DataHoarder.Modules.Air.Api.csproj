@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DataHoarder.Modules.Air.Core\DataHoarder.Modules.Air.Core.csproj" />
+    <ProjectReference Include="..\DataHoarder.Shared.Infrastructure\DataHoarder.Shared.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>
