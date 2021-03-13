@@ -1,6 +1,8 @@
 ﻿using DataHoarder.Shared.Infrastructure.Api;
+using DataHoarder.Shared.Infrastructure.ProblemDetails;
 using Hangfire;
 using Hangfire.MemoryStorage;
+using Hellang.Middleware.ProblemDetails;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
@@ -13,6 +15,9 @@ namespace DataHoarder.Shared.Infrastructure
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services)
         {
+            // configure exceptions handling
+            services.AddProblemDetails(ProblemsDetails.Configure);
+
             services.AddControllers()
                 .ConfigureApplicationPartManager(manager =>
                 {
@@ -59,6 +64,7 @@ namespace DataHoarder.Shared.Infrastructure
 
         public static IApplicationBuilder UseInfrastructure(this IApplicationBuilder app)
         {
+            app.UseProblemDetails();
             app.UseHangfireDashboard();
             return app;
         }
